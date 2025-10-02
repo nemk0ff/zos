@@ -1,15 +1,13 @@
-CFLAGS=-Wall -Wextra -ggdb
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c17
 
 all: mycat mygrep
 
-.PHONY: clear
+mycat: main.c
+	$(CC) $(CFLAGS) main.c -o mycat
 
-mycat: mycat.c
-	gcc $(CFLAGS) mycat.c -o mycat
+mygrep: main.c
+	$(CC) $(CFLAGS) main.c -o mygrep
 
-mygrep: mygrep.c
-	gcc $(CFLAGS) mygrep.c -o mygrep
-
-clear:
-	rm mycat mygrep
-	rm mycat.exe mygrep.exe
+clean:
+	rm -f mycat mygrep
